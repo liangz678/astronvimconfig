@@ -101,25 +101,27 @@ return {
         command = CPPDBG_DIR .. "/extension/debugAdapters/bin/OpenDebugAD7",
       }
 
-      -- local cppdbg_launch = {
-      --   name = "Launch file",
-      --   type = "cppdbg",
-      --   request = "launch",
-      --   program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
-      --   args = function()
-      --     local input = vim.fn.input "Input args: "
-      --     return str2argtable(input)
-      --   end,
-      --   cwd = "${workspaceFolder}",
-      --   stopOnEntry = true,
-      --   setupCommands = {
-      --     {
-      --       description = "enable pretty printing",
-      --       text = "-enable-pretty-printing",
-      --       ignoreFailures = false,
-      --     },
-      --   },
-      -- }
+      local cppdbg_launch = {
+        name = "Launch file(cppdbg)",
+        type = "cppdbg",
+        request = "launch",
+        miDebuggerPath = "/usr/local/bin/lldb-mi",
+        MIMode = "lldb",
+        program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
+        args = function()
+          local input = vim.fn.input "Input args: "
+          return str2argtable(input)
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = true,
+        setupCommands = {
+          {
+            description = "enable pretty printing",
+            text = "-enable-pretty-printing",
+            ignoreFailures = false,
+          },
+        },
+      }
       -- local cppdbg_attach_p = {
       --   name = "Attach process",
       --   type = "cppdbg",
@@ -139,14 +141,14 @@ return {
         name = "Attach to gdbserver :1234",
         type = "cppdbg",
         request = "launch",
-        MIMode = "gdb",
+        MIMode = "lldb",
         miDebuggerServerAddress = "localhost:1234",
-        miDebuggerPath = "/usr/local/bin/gdb",
+        miDebuggerPath = "/usr/local/bin/lldb-mi",
         cwd = "${workspaceFolder}",
         program = function() return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file") end,
         setupCommands = {
           {
-            text = "-enable-pretty-printing",
+            text = "-enable-prett-printing",
             description = "enable pretty printing",
             ignoreFailures = false,
           },
@@ -159,11 +161,15 @@ return {
         request = "launch",
         ---@diagnostic disable-next-line: redundant-parameter
         program = function() return vim.fn.input("executable: ", vim.fn.getcwd() .. "/build/", "file") end,
+        args = function()
+          local input = vim.fn.input "Input args: "
+          return str2argtable(input)
+        end,
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
       }
-      dap.configurations.c = { lldb, attach_s }
-      dap.configurations.cpp = { lldb, attach_s }
+      dap.configurations.c = { lldb, attach_s, cppdbg_launch }
+      dap.configurations.cpp = { lldb, attach_s, cppdbg_launch }
       dap.configurations.rust = { lldb }
     end,
   },
