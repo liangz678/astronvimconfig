@@ -38,6 +38,34 @@ return {
   {
     "LunarVim/lunar.nvim",
   },
+  {
+    "nat-418/boole.nvim",
+    lazy = false,
+    config = function()
+      require("boole").setup {
+        mappings = {
+          increment = "<M-i>",
+          decrement = "<M-o>",
+        },
+        -- User defined loops
+        additions = {},
+        allow_caps_additions = {
+          { "enable", "disable" },
+          {
+            "CRITICAL",
+            "ERROR",
+            "ARNING",
+            "DEBUG",
+            "INFO",
+          },
+          -- enable → disable
+          -- Enable → Disable
+          -- ENABLE → DISABLE
+        },
+      }
+    end,
+  },
+
   -- You can also add new plugins here as well:
   -- Add plugins, the lazy syntax
   -- "andweeb/presence.nvim",

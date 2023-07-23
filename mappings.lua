@@ -35,11 +35,22 @@ return {
     ["<leader>rr"] = { "<cmd>SnipRun<CR>" },
     ["<leader>rc"] = { "<cmd>SnipClose<cr>", desc = "Clearing" },
     ["<leader>rs"] = { "<cmd>SnipReset<cr>", desc = "Stopping" },
+    -- swap line
+    ["<M-j>"] = { ":m .+1<CR>==" },
+    ["<M-k>"] = { ":m .-2<CR>==" },
   },
   v = {
     ["H"] = { "^" },
     ["L"] = { "$" },
     ["<leader>rr"] = { "<cmd>SnipRun<CR>" },
+  },
+  x = {
+    ["<M-j>"] = { ":m '>+1<CR>gv-gv" },
+    ["<M-k>"] = { ":m '<lt>-2<CR>gv-gv" },
+  },
+  i = {
+    ["<M-j>"] = { "<Esc>:m .+1<CR>==gi" },
+    ["<M-k>"] = { "<Esc>:m .-2<CR>==gi" },
   },
   t = {
     -- setting a mapping to false will disable it
