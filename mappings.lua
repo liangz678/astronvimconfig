@@ -38,6 +38,7 @@ return {
     -- swap line
     ["<M-j>"] = { ":m .+1<CR>==" },
     ["<M-k>"] = { ":m .-2<CR>==" },
+    ["<leader>Q"] = { "<cmd>confirm qa<cr>", desc = "Quit All" },
   },
   v = {
     ["H"] = { "^" },

@@ -104,4 +104,7 @@ return {
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
 
   { import = "astrocommunity.diagnostics.trouble-nvim" },
+
+  { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
+  { import = "astrocommunity.debugging.telescope-dap-nvim" },
 }
