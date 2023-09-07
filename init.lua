@@ -1,3 +1,4 @@
+vim.cmd [[autocmd BufEnter *.slint :setlocal filetype=slint]]
 return {
   -- Configure AstroNvim updates
   updater = {

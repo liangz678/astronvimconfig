@@ -100,6 +100,7 @@ return {
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.dart" },
 
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
 
