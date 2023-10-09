@@ -51,7 +51,7 @@ return {
 
   { import = "astrocommunity.completion.tabnine-nvim" },
   {
-    "tabnine",
+    "tabnine-nvim",
     opts = {
       disable_auto_comment = true,
       accept_keymap = "<RIGHT>",
