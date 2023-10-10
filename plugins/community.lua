@@ -51,7 +51,7 @@ return {
 
   { import = "astrocommunity.completion.tabnine-nvim" },
   {
-    "tabnine",
+    "tabnine-nvim",
     opts = {
       disable_auto_comment = true,
       accept_keymap = "<RIGHT>",
@@ -102,7 +102,7 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.dart" },
 
-  { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
+  -- { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
 
   { import = "astrocommunity.diagnostics.trouble-nvim" },
 

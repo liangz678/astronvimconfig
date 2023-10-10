@@ -1,4 +1,8 @@
 vim.cmd [[autocmd BufEnter *.slint :setlocal filetype=slint]]
+-- vim.cmd [[autocmd VimEnter * !im-select.exe 1033]]
+vim.cmd [[autocmd InsertEnter * :silent :!im-select.exe 2052]]
+vim.cmd [[autocmd InsertLeave * :silent :!im-select.exe 1033]]
+vim.cmd [[autocmd VimLeave * !im-select.exe 2052]]
 return {
   -- Configure AstroNvim updates
   updater = {
