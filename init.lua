@@ -1,4 +1,13 @@
-vim.cmd [[autocmd BufEnter *.slint :setlocal filetype=slint]]
+vim.cmd [[
+  autocmd BufEnter *.slint :setlocal filetype=slint
+  " autocmd VimEnter * !im-select.exe 1033
+  autocmd InsertEnter * :silent :!im-select.exe 2052
+  autocmd InsertLeave * :silent :!im-select.exe 1033
+  autocmd VimLeave * :silent: :!im-select.exe 2052
+
+  autocmd FileType typst autocmd BufWritePost *  :silent :!typstfmt.exe %
+  ]]
+
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -38,6 +47,7 @@ return {
           "python",
           "lua",
           "c",
+          "matlab",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
@@ -80,6 +90,13 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
+    require("lspconfig").typst_lsp.setup {
+      root_dir = function() return vim.fn.getcwd() end,
+      settings = {
+        exportPdf = "onType", -- Choose onType, onSave or never.
+        -- serverPath = "" -- Normally, there is no need to uncomment it.
+      },
+    }
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {

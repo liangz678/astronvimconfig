@@ -92,4 +92,14 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  -- { "kaarmu/typst.vim", ft = "typst", lazy = false },
+  { "git@github.com:terryma/vim-multiple-cursors.git", lazy = false },
+  {
+    "chomosuke/typst-preview.nvim",
+    -- lazy = false, -- or ft = 'typst'
+    ft = "typst",
+    version = "0.1.*",
+    build = function() require("typst-preview").update() end,
+  },
+  -- "niuiic/typst-preview.nvim",
 }
