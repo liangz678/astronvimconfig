@@ -96,6 +96,8 @@ return {
         exportPdf = "onType", -- Choose onType, onSave or never.
         -- serverPath = "" -- Normally, there is no need to uncomment it.
       },
+      on_attach = require("astronvim.utils.lsp").on_attach,
+      require("astronvim.utils.lsp").on_attach,
     }
     -- Set up custom filetypes
     -- vim.filetype.add {
